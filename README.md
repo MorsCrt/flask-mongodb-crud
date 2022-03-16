@@ -1,2 +1,3 @@
-# flask-mongodb-crud
-Python Flask ile MongoDB Crud
+Python Flask ile Basit MongoDB Crud İşlemleri
+~
+Simple MongoDB Crud Operations with Python Flask
