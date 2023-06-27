@@ -5,16 +5,17 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-app.config["MONGO_URI"] = "mongodb://localhost:27017/Users"
+app.config["MONGO_URI"] = "mongodb://mongodb:27017/Users"
 mongo = PyMongo(app)
 
 
 @app.route('/add', methods=['POST'])
 def add_user():
     _json = request.json
+    
     username = _json['username']
     lastname = _json['lastname']
-
+    
     if username and lastname and request.method == 'POST':
         id = mongo.db.userdb.insert_one({'username': username, 'lastname': lastname})
         resp = jsonify("Update Success")
@@ -75,5 +76,5 @@ def not_found(error=None):
     return resp
 
 
-if __name__ == "_main_":
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0',debug=True)
